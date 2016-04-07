@@ -1,0 +1,14 @@
+{
+  "name": "Satis on Heroku",
+  "description": "Satis instance running on Heroku",
+  "success_url": "/",
+  "env": {
+    "SATIS_NAME": {
+      "description": "The name of your Satis composer repository.",
+      "required": true
+    }
+  },
+  "addons": [
+    "runtime-dyno-metadata"
+  ]
+}
