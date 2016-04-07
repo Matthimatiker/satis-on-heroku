@@ -1,0 +1,12 @@
+{
+    "name": "{{ env.SATIS_NAME }}",
+    "homepage": "https://{{ env.HEROKU_APP_NAME }}.herokuapp.com",
+    "output-dir": "web",
+    "require-all": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:Matthimatiker/OpcacheBundle.git"
+        }
+    ]
+}
