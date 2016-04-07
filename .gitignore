@@ -1,6 +1,9 @@
 # IDE
 /.idea/
 
+# Heroku
+.env
+
 # Composer
 /vendor/
 
