@@ -1,0 +1,14 @@
+{
+    "name": "matthimatiker/satis-on-heroku",
+    "description": "Satis instance running on Heroku",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthias Molitor",
+            "email": "matthias@matthimatiker.de"
+        }
+    ],
+    "require": {
+        "composer/satis": "dev-master"
+    }
+}
