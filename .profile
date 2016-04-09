@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Configure Composer to use a GitHub Token if one was provided.
-if [ -z "$SATIS_GITHUB_TOKEN" ]; then
+if ! [ -z "$SATIS_GITHUB_TOKEN" ]; then
     vendor/bin/composer config github-oauth.github.com $SATIS_GITHUB_TOKEN
 fi
 
