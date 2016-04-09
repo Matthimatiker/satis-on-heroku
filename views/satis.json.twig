@@ -4,9 +4,14 @@
     "output-dir": "web",
     "require-all": true,
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:Matthimatiker/OpcacheBundle.git"
-        }
+        {% for repository in repositories %}
+            {
+                "type": "vcs",
+                "url": "{{ repository }}"
+            }
+            {% if not loop.last %}
+                ,
+            {% endif %}
+        {% endfor %}
     ]
 }

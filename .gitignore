@@ -9,3 +9,6 @@
 
 # Satis
 /web/
+
+# Specific for this application
+satis.json
