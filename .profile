@@ -9,4 +9,4 @@ fi
 php bin/generate-satis-config.php
 
 # Perform an initial build when the instance starts.
-./vendor/bin/satis build --no-interaction
+./vendor/bin/satis build --no-interaction --skip-errors
