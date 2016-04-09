@@ -6,6 +6,10 @@
     "SATIS_NAME": {
       "description": "The name of your Satis composer repository.",
       "required": true
+    },
+    "SATIS_GITHUB_TOKEN": {
+      "description": "https://github.com/settings/tokens/new?scopes=repo&description=Satis+on+Heroku",
+      "required": false
     }
   },
   "addons": [
