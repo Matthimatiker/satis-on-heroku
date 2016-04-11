@@ -3,7 +3,7 @@
 # Store the SSH key.
 if ! [ -z "$SATIS_SSH_KEY" ]; then
     mkdir -p $HOME/.ssh
-    echo $SATIS_SSH_KEY | base64 --decode > $HOME/.ssh/id_rsa
+    echo "$SATIS_SSH_KEY" > $HOME/.ssh/id_rsa
     # Generate a corresponding public key.
     ssh-keygen -y -f $HOME/.ssh/id_rsa > $HOME/.ssh/id_rsa.pub
     ssh-keyscan github.com >> "$HOME/.ssh/known_hosts"
