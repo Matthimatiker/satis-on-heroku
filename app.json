@@ -28,6 +28,5 @@
         }
     },
     "addons": [
-        "runtime-dyno-metadata"
     ]
 }
