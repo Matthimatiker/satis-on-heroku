@@ -10,14 +10,17 @@
             "required": true
         },
         "SATIS_URL": {
+            "value": "",
             "description": "URL to your Satis instance. Usually https://[appname].herokuapp.com.",
             "required": false
         },
         "SATIS_GITHUB_TOKEN": {
+            "value": "",
             "description": "https://github.com/settings/tokens/new?scopes=repo&description=Satis+on+Heroku",
             "required": false
         },
         "SATIS_SSH_KEY": {
+            "value": "",
             "description": "Private SSH key that is used to access repositories.",
             "required": false
         },
