@@ -1,18 +1,32 @@
 {
-  "name": "Satis on Heroku",
-  "description": "Satis instance running on Heroku",
-  "success_url": "/",
-  "env": {
-    "SATIS_NAME": {
-      "description": "The name of your Satis composer repository.",
-      "required": true
+    "name": "Satis on Heroku",
+    "description": "Satis instance running on Heroku",
+    "success_url": "/",
+    "env": {
+        "SATIS_NAME": {
+            "default": "Satis on Heroku",
+            "description": "The name of your Satis composer repository.",
+            "required": true
+        },
+        "SATIS_URL": {
+            "description": "URL to your Satis instance. Usually https://[appname].herokuapp.com.",
+            "required": false
+        },
+        "SATIS_GITHUB_TOKEN": {
+            "description": "https://github.com/settings/tokens/new?scopes=repo&description=Satis+on+Heroku",
+            "required": false
+        },
+        "SATIS_SSH_KEY": {
+            "description": "Private SSH key that is used to access repositories.",
+            "required": false
+        },
+        "SATIS_REPOSITORY_EXAMPLE": {
+            "default": "https://github.com/Matthimatiker/satis-on-heroku",
+            "description": "Example repository. Add additional repositories via SATIS_REPOSITORY_* config values.",
+            "required": false
+        }
     },
-    "SATIS_GITHUB_TOKEN": {
-      "description": "https://github.com/settings/tokens/new?scopes=repo&description=Satis+on+Heroku",
-      "required": false
-    }
-  },
-  "addons": [
-    "runtime-dyno-metadata"
-  ]
+    "addons": [
+        "runtime-dyno-metadata"
+    ]
 }
