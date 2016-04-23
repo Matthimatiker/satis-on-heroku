@@ -1,6 +1,6 @@
 {
     "name": "{{ env.SATIS_NAME }}",
-    "homepage": "{{ (env.SATIS_URL is not empty and env.HEROKU_APP_NAME is defined) ? 'https://' ~ env.HEROKU_APP_NAME ~ '.herokuapp.com' : env.SATIS_URL }}",
+    "homepage": "{{ (env.SATIS_URL is empty and env.HEROKU_APP_NAME is defined) ? 'https://' ~ env.HEROKU_APP_NAME ~ '.herokuapp.com' : env.SATIS_URL }}",
     "output-dir": "web",
     "require-all": true,
     "repositories": [
