@@ -1,6 +1,7 @@
 {
     "name": "Satis on Heroku",
     "description": "Satis instance running on Heroku",
+    "repository": "https://github.com/Matthimatiker/satis-on-heroku",
     "success_url": "/",
     "env": {
         "SATIS_NAME": {
