@@ -5,7 +5,7 @@
     "success_url": "/",
     "env": {
         "SATIS_NAME": {
-            "default": "Satis on Heroku",
+            "value": "Satis on Heroku",
             "description": "The name of your Satis composer repository.",
             "required": true
         },
@@ -22,7 +22,7 @@
             "required": false
         },
         "SATIS_REPOSITORY_EXAMPLE": {
-            "default": "https://github.com/Matthimatiker/satis-on-heroku",
+            "value": "https://github.com/Matthimatiker/satis-on-heroku",
             "description": "Example repository. Add additional repositories via SATIS_REPOSITORY_* config values.",
             "required": false
         }
