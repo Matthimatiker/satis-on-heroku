@@ -6,7 +6,6 @@
 
 # Composer
 /vendor/
-auth.json
 
 # Satis
 /web/
