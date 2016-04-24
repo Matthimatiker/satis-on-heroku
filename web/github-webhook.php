@@ -28,6 +28,13 @@ $possibleRepositoryUrls = array(
 
 $satisConfigFile = new JsonFile(__DIR__ . '/../satis.json');
 $config = new Config();
-$config->merge(array('config' => $satisConfigFile->read()));
+$config->merge($satisConfigFile->read());
+$configuredRepositories = array_map(function (array $repositoryData) {
+    if (!isset($repositoryData['url'])) {
+        return null;
+    }
+    return $repositoryData['url'];
+}, $config->getRepositories());
+$configuredRepositories = array_filter($configuredRepositories);
 
-var_dump($possibleRepositoryUrls, $config->getRepositories());
+var_dump($configuredRepositories);
