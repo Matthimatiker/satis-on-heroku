@@ -44,7 +44,12 @@ a separate account with read-only access for your Satis app.
 
 ### Add a GitHub token ###
 
-TODO
+You can add a GitHub token to ensure that the Satis instance can access private GitHub repositories.
+
+Create a new token at [https://github.com/settings/tokens/new](https://github.com/settings/tokens/new?scopes=repo&description=Satis+on+Heroku).
+Afterwards add it as configuration variable to your Satis app:
+
+    heroku config:set SATIS_GITHUB_TOKEN="[your-generated-token]"
 
 ### Remove the example repository ###
 
