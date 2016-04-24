@@ -46,7 +46,7 @@ if (count($matches) === 0) {
 }
 $repositoryToUpdate = current($matches);
 
-$command = 'vendor/bin/satis --repository-url=' . ProcessUtils::escapeArgument($repositoryToUpdate);
+$command = 'vendor/bin/satis build --repository-url=' . ProcessUtils::escapeArgument($repositoryToUpdate);
 $process = new Process($command, __DIR__ . '/..');
 $process->run(function ($type, $buffer) {
     if (Process::ERR === $type) {
