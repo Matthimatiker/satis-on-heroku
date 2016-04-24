@@ -43,4 +43,17 @@ class SatisConfig
         }, $this->config->getRepositories());
         return array_filter($configuredRepositories);
     }
+
+    /**
+     * Returns the host names of all configured repositories.
+     *
+     * @return string[]
+     */
+    public function getRepositoryHosts()
+    {
+        $hosts = array_map(function ($repositoryUrl) {
+            return parse_url($repositoryUrl, PHP_URL_HOST);
+        }, $this->getRepositoryUrls());
+        return array_unique($hosts);
+    }
 }
