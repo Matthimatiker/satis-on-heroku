@@ -8,7 +8,9 @@
 /vendor/
 
 # Satis
-/web/
+/web/include
+/web/packages.json
+/web/index.html
 
 # Specific for this application
 satis.json
