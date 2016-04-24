@@ -15,7 +15,7 @@
         {% endfor %}
     ],
     "config": {
-        {% if env.SATIS_GITHUB_TOKEN is not empty%}
+        {% if env.SATIS_GITHUB_TOKEN is not empty %}
             "github-oauth": {
                 "github.com": "{{ env.SATIS_GITHUB_TOKEN }}"
             }
