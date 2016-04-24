@@ -3,7 +3,6 @@
 namespace Matthimatiker\SatisOnHeroku;
 
 use Composer\Config;
-use Composer\Json\JsonFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Process\Process;
@@ -34,17 +33,7 @@ $possibleRepositoryUrls = array(
     sprintf('https://github.com/%s.git', $repositoryName),
 );
 
-$satisConfigFile = new JsonFile(__DIR__ . '/../satis.json');
-$config = new Config();
-$config->merge($satisConfigFile->read());
-$configuredRepositories = array_map(function (array $repositoryData) {
-    if (!isset($repositoryData['url'])) {
-        return null;
-    }
-    return $repositoryData['url'];
-}, $config->getRepositories());
-$configuredRepositories = array_filter($configuredRepositories);
-
+$configuredRepositories = (new SatisConfig())->getRepositoryUrls();
 $matches = array_intersect($configuredRepositories, $possibleRepositoryUrls);
 if (count($matches) === 0) {
     $response->setStatusCode(404);
