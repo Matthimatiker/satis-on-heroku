@@ -66,9 +66,17 @@ Here is an example how to add a repository:
 
 You can also use the app settings page on the [Heroku dashboard](https://dashboard.heroku.com) to add config values.
 
-### Update ###
+### Configure GitHub webhook ###
 
-Currently, you have to restart your app to rebuild the package repository:
+To ensure that your package repository is updated as soon as code is pushed to a GitHub repository you have
+to configure the built in webhook for each repository. Go to your *repository page* -> *Settings* -> *Webhooks and services*
+and register the following Payload URL for push events:
+
+    https://[your-app-name].herokuapp.com/github-webhook.php
+
+### Update all packages ###
+
+To rebuild the whole package repository you have to restart your app:
 
     heroku restart
     
