@@ -37,4 +37,11 @@ $configuredRepositories = array_map(function (array $repositoryData) {
 }, $config->getRepositories());
 $configuredRepositories = array_filter($configuredRepositories);
 
-var_dump($configuredRepositories);
+$matches = array_intersect($configuredRepositories, $possibleRepositoryUrls);
+if (count($matches) === 0) {
+    echo 'Cannot update, none of the following repositories is managed by this Satis instance: ' . implode(',', $possibleRepositoryUrls);
+    exit();
+}
+$repositoryToUpdate = current($matches);
+
+var_dump($repositoryToUpdate);
