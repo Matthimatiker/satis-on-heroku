@@ -60,11 +60,14 @@ $repositoryToUpdate = current($matches);
 $command = 'vendor/bin/satis build --no-interaction --repository-url=%s';
 $command = sprintf($command, ProcessUtils::escapeArgument($repositoryToUpdate));
 $process = new Process($command, __DIR__ . '/..');
-$output = '';
-$process->run(function ($type, $buffer) use (&$output) {
-    $output .= $buffer;
-});
+$process->run();
+if (!$process->isSuccessful()) {
+    $response->setStatusCode(500);
+    $response->setContent($process->getErrorOutput());
+    $response->send();
+    exit();
+}
 
-$response->setStatusCode($process->isSuccessful() ? 200 : 500);
-$response->setContent($output);
+$response->setStatusCode(200);
+$response->setContent($process->getOutput());
 $response->send();
