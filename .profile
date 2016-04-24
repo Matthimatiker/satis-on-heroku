@@ -6,6 +6,7 @@ if ! [ -z "$SATIS_SSH_KEY" ]; then
     echo "$SATIS_SSH_KEY" > $HOME/.ssh/id_rsa
     # Generate a corresponding public key.
     ssh-keygen -y -f $HOME/.ssh/id_rsa > $HOME/.ssh/id_rsa.pub
+    chmod -R 600 $HOME/.ssh
 fi
 
 # Generate the Satis config
