@@ -2,6 +2,10 @@
     "name": "Satis on Heroku",
     "description": "Satis instance running on Heroku",
     "repository": "https://github.com/Matthimatiker/satis-on-heroku",
+    "keywords": [
+        "Satis",
+        "Composer"
+    ],
     "success_url": "/",
     "env": {
         "SATIS_NAME": {
