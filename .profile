@@ -13,5 +13,7 @@ if ! [ -z "$SATIS_SSH_KEY" ]; then
     php bin/print-repository-hosts.php | xargs ssh-keyscan >> "$HOME/.ssh/known_hosts"
 fi
 
+htpasswd -c -b -B .htpasswd test test
+
 # Perform an initial build when the instance starts.
 ./vendor/bin/satis build --no-interaction --skip-errors

@@ -7,6 +7,9 @@
 # Composer
 /vendor/
 
+# Apache
+.htpasswd
+
 # Satis
 /web/include
 /web/packages.json
