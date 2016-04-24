@@ -4,6 +4,9 @@ Your private Satis instance on Heroku, just one click away.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+Use the button above to deploy your own Satis instance. It's free, all you need is a 
+[Heroku](https://heroku.com) account.
+
 ## Initial Configuration ##
 
 ### Connect local checkout to Heroku app ###
