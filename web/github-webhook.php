@@ -1,11 +1,19 @@
 <?php
 
-if (!isset($_POST['payload'])) {
-    echo 'Missing payload.';
+namespace Matthimatiker\SatisOnHeroku;
+
+use Symfony\Component\HttpFoundation\Request;
+
+require(__DIR__ . '/../vendor/autoload.php');
+
+$request = Request::createFromGlobals();
+
+if (!$request->isMethod('POST')) {
+    echo 'Expected POST request.';
     exit();
 }
 
-$payload = json_decode($_POST['payload'], true);
+$payload = json_decode($request->getContent(), true);
 if (!isset($payload['repository']['full_name'])) {
     echo 'Expected repository name in payload.';
     exit();
