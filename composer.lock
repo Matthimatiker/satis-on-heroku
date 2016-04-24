@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3c5101ae30811e970249fe9e11fd631a",
-    "content-hash": "2fd460cb9d943bd15ceeda7f2a25389d",
+    "hash": "53a831df0a53ee979b417c7183d448e7",
+    "content-hash": "8371e9081c8d0465eef36c2da7e0cdd1",
     "packages": [
         {
             "name": "composer/composer",
@@ -92,7 +92,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/satis/zipball/6ddaf742453fa19f4e422c6d2eea58bac38142d7",
+                "url": "https://api.github.com/repos/composer/satis/zipball/bb35695fe414955796d4f3de06b160ba507c3c9e",
                 "reference": "6ddaf742453fa19f4e422c6d2eea58bac38142d7",
                 "shasum": ""
             },
