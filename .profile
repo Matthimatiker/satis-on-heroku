@@ -12,7 +12,7 @@ fi
 php bin/generate-satis-config.php
 
 # Add hosts of all configured repositories to known_hosts
-php bin/repository-hosts.php | xargs ssh-keyscan >> "$HOME/.ssh/known_hosts"
+php bin/print-repository-hosts.php | xargs ssh-keyscan >> "$HOME/.ssh/known_hosts"
 
 # Perform an initial build when the instance starts.
 ./vendor/bin/satis build --no-interaction --skip-errors
