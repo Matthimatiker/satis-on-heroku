@@ -16,7 +16,7 @@
         },
         "SATIS_GITHUB_TOKEN": {
             "value": "",
-            "description": "https://github.com/settings/tokens/new?scopes=repo&description=Satis+on+Heroku",
+            "description": "GitHub-API-Token. Create one at https://github.com/settings/tokens/new?scopes=repo&description=Satis+on+Heroku",
             "required": false
         },
         "SATIS_SSH_KEY": {
