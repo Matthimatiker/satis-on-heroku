@@ -14,7 +14,7 @@ if ! [ -z "$SATIS_SSH_KEY" ]; then
 fi
 
 htpasswd -c -b -B "$HOME/.htpasswd" test test
-php bin/render-template.php views/htpasswd.text.twig > web/.htpasswd
+php bin/render-template.php views/htaccess.text.twig > web/.htaccess
 
 # Perform an initial build when the instance starts.
 ./vendor/bin/satis build --no-interaction --skip-errors
