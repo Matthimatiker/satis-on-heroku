@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Generate the Satis config
-php bin/generate-satis-config.php
+php bin/render-template.php views/satis.json.twig > satis.json
 
 # Store the SSH key.
 if ! [ -z "$SATIS_SSH_KEY" ]; then
