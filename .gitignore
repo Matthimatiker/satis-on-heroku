@@ -8,7 +8,8 @@
 /vendor/
 
 # Apache
-.htpasswd
+/.htpasswd
+/web/.htaccess
 
 # Satis
 /web/include
@@ -16,4 +17,4 @@
 /web/index.html
 
 # Specific for this application
-satis.json
+/satis.json

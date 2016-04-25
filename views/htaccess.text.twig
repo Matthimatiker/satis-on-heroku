@@ -1,0 +1,4 @@
+AuthUserFile "{{ env.HOME }}/.htpasswd"
+AuthType Basic
+AuthName "{{ env.SATIS_NAME }}"
+Require valid-user
