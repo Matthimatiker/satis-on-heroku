@@ -18,6 +18,15 @@
             "description": "URL to your Satis instance. Usually https://[appname].herokuapp.com.",
             "required": false
         },
+        "SATIS_AUTH_USERNAME": {
+            "value": "",
+            "description": "Username that is required to access your Satis repository. Leave empty to disable authentication.",
+            "required": false
+        },
+        "SATIS_AUTH_PASSWORD": {
+            "description": "Password that is required to access your Satis repository. Can be changed later via Heroku configuration if necessary.",
+            "generator": "secret"
+        },
         "SATIS_GITHUB_TOKEN": {
             "value": "",
             "description": "GitHub-API-Token. Create one at https://github.com/settings/tokens/new?scopes=repo&description=Satis+on+Heroku",
