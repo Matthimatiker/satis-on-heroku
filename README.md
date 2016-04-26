@@ -54,6 +54,16 @@ Afterwards add it as configuration variable to your Satis app:
 
     heroku config:set SATIS_GITHUB_TOKEN="[your-generated-token]"
 
+### Secure the Satis instance ###
+
+To restrict access you can activate basic authentication for your Satis instance. Just assign a username and password:
+
+    heroku config:set SATIS_AUTH_USERNAME=test SATIS_AUTH_PASSWORD=secret
+    
+Set the username to an empty value to disable the authentication:
+    
+    heroku config:set SATIS_AUTH_USERNAME=
+
 ### Remove the example repository ###
 
 For demonstration purposes, an example repository has been registered during deployment. You might want 
@@ -81,6 +91,10 @@ to configure the built in webhook for each repository. Go to your *repository pa
 and register the following Payload URL for push events:
 
     https://[your-app-name].herokuapp.com/github-webhook.php
+
+Note: If you have activated authentication, then you have to encode the credentials in the Payload URL:
+
+    https://user:password:[your-app-name].herokuapp.com/github-webhook.php
 
 ### Update all packages ###
 
