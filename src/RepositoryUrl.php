@@ -8,11 +8,18 @@ namespace Matthimatiker\SatisOnHeroku;
 class RepositoryUrl
 {
     /**
+     * The original URL.
+     *
+     * @var string
+     */
+    protected $url = null;
+
+    /**
      * @param string $url
      */
     public function __construct($url)
     {
-
+        $this->url = $url;
     }
 
     /**
@@ -20,7 +27,7 @@ class RepositoryUrl
      */
     public function getHost()
     {
-
+        return parse_url($this->url, PHP_URL_HOST);
     }
 
     /**
@@ -28,6 +35,6 @@ class RepositoryUrl
      */
     public function __toString()
     {
-
+        return $this->url;
     }
 }
