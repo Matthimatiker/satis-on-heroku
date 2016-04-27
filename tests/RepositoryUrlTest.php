@@ -6,10 +6,18 @@ use Matthimatiker\SatisOnHeroku\RepositoryUrl;
 
 class RepositoryUrlTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * GitHub SSH URLs cannot be parsed via parse_url(). Therefore, special handling
+     * is necessary.
+     */
     const URL_GITHUB_SSH  = 'git@github.com:Matthimatiker/satis-on-heroku.git';
     const URL_GITHUB_HTTP = 'https://github.com/Matthimatiker/satis-on-heroku.git';
     const URL_KILN_SSH    = 'ssh://user@my-company.kilnhg.com/project/group/repo';
     const URL_KILN_HTTP   = 'https://my-company.kilnhg.com/Code/project/group/repo.git';
+    /**
+     * Some URLs that are listed in the Composer/Satis config contain a special question
+     * mark to indicate that downgrading to HTTP is possible.
+     */
     const URL_PACKAGIST   = 'https?://packagist.org';
 
     public function testToStringReturnsOriginalGitHubSshUrl()
