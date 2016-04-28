@@ -19,6 +19,11 @@ class WebhookManagerTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testUpdatesWebhookIfUrlPathChanged()
+    {
+
+    }
+
     public function testDoesNotUpdateIfWebhookDidNotChange()
     {
 
