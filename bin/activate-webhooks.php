@@ -19,11 +19,15 @@ if ($token === null) {
 }
 
 $client = new Client();
-$client->authenticate(Client::AUTH_HTTP_TOKEN, null, $token);
+$client->authenticate($token, null, Client::AUTH_HTTP_TOKEN);
 $webhooksApi = $client->repos()->hooks();
 
 foreach ($config->getRepositoryUrls() as $url) {
     if ($url->getHost() !== 'github.com') {
         continue;
     }
+    list($owner, $repository) = $url->getPathSegments();
+    $repository = basename($repository, '.git');
+    $activeHooks = $webhooksApi->all($owner, $repository);
+    //var_dump($activeHooks);
 }
