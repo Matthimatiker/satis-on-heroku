@@ -27,7 +27,7 @@ class RepositoryUrl
      */
     public function getHost()
     {
-        return parse_url($this->url, PHP_URL_HOST);
+        return parse_url($this->getNormalizedUrl(), PHP_URL_HOST);
     }
 
     /**
@@ -35,6 +35,23 @@ class RepositoryUrl
      */
     public function __toString()
     {
+        return $this->url;
+    }
+
+    /**
+     * Returns a normalized URL that can be handled by the native parse_url() function.
+     *
+     * @return string
+     */
+    private function getNormalizedUrl()
+    {
+        if (strpos($this->url, 'https?://') === 0) {
+            return 'https://' . substr($this->url, strlen('https?://'));
+        }
+        if (preg_match('/^[a-zA-Z]+@([^:]+):([^\/]+)(\/[^\/]+)*$/', $this->url)) {
+            // Short SSH Url. Add the protocol and a slash to the path.
+            return 'ssh://' . implode(':/', explode(':', $this->url, 2));
+        }
         return $this->url;
     }
 }
