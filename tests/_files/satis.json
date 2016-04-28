@@ -16,5 +16,10 @@
             "type": "vcs",
             "url": "https://github.com/Matthimatiker/OpcacheBundle.git"
         }
-    ]
+    ],
+    "config": {
+        "github-oauth": {
+            "github.com": "MySecretGitHubToken"
+        }
+    }
 }

@@ -56,4 +56,14 @@ class SatisConfig
         }, $this->getRepositoryUrls());
         return array_unique($hosts);
     }
+
+    /**
+     * Returns the GitHub token, if available.
+     *
+     * @return string|null
+     */
+    public function getGitHubToken()
+    {
+
+    }
 }
