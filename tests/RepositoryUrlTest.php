@@ -70,6 +70,16 @@ class RepositoryUrlTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('packagist.org', $this->createFrom(self::URL_PACKAGIST)->getHost());
     }
 
+    public function testGetPathReturnsCorrectValueForGitHubSshUrl()
+    {
+        $this->assertEquals('/Matthimatiker/satis-on-heroku.git', $this->createFrom(self::URL_GITHUB_SSH)->getPath());
+    }
+
+    public function testGetPathReturnsCorrectValueForGitHubHttpUrl()
+    {
+        $this->assertEquals('/Matthimatiker/satis-on-heroku.git', $this->createFrom(self::URL_GITHUB_HTTP)->getPath());
+    }
+
     /**
      * @param string $url
      * @return RepositoryUrl

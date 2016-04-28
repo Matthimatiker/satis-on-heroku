@@ -31,6 +31,16 @@ class RepositoryUrl
     }
 
     /**
+     * Returns the path of the URL.
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return parse_url($this->getNormalizedUrl(), PHP_URL_PATH);
+    }
+
+    /**
      * @return string The original URL.
      */
     public function __toString()
