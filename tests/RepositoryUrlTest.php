@@ -80,6 +80,13 @@ class RepositoryUrlTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/Matthimatiker/satis-on-heroku.git', $this->createFrom(self::URL_GITHUB_HTTP)->getPath());
     }
 
+    public function testGetPathSegmentsReturnsCorrectValueForGitHubSshUrl()
+    {
+        $segments = $this->createFrom(self::URL_GITHUB_SSH)->getPathSegments();
+
+        $this->assertEquals(array('Matthimatiker', 'satis-on-heroku.git'), $segments);
+    }
+
     /**
      * @param string $url
      * @return RepositoryUrl

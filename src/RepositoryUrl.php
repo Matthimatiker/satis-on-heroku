@@ -41,6 +41,16 @@ class RepositoryUrl
     }
 
     /**
+     * Returns the segments of the path.
+     *
+     * @return string[]
+     */
+    public function getPathSegments()
+    {
+        return explode('/', ltrim($this->getPath(), '/'));
+    }
+
+    /**
      * @return string The original URL.
      */
     public function __toString()
