@@ -64,6 +64,7 @@ class SatisConfig
      */
     public function getGitHubToken()
     {
-
+        $auth = $this->config->get('github-oauth');
+        return (isset($auth['github.com'])) ? $auth['github.com'] : null;
     }
 }

@@ -70,6 +70,13 @@ class SatisConfigTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('MySecretGitHubToken', $this->config->getGitHubToken());
     }
 
+    public function testGetGitHubTokenReturnsNullIfTokenIsNotAvailable()
+    {
+        $config = new SatisConfig(__DIR__ . '/_files/satis_without_token.json');
+
+        $this->assertNull($config->getGitHubToken());
+    }
+
     public function testThrowsExceptionIfConfigFileDoesNotExist()
     {
         $this->setExpectedException(\Exception::class);

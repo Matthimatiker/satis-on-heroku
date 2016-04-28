@@ -1,0 +1,8 @@
+{
+    "name": "My Satis",
+    "homepage": "https://my-app.herokuapp.com",
+    "output-dir": "web",
+    "require-all": true,
+    "repositories": [
+    ]
+}
