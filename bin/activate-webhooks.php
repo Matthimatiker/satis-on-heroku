@@ -29,5 +29,5 @@ foreach ($config->getRepositoryUrls() as $url) {
     list($owner, $repository) = $url->getPathSegments();
     $repository = basename($repository, '.git');
     $activeHooks = $webhooksApi->all($owner, $repository);
-    //var_dump($activeHooks);
+    var_dump($activeHooks);
 }
