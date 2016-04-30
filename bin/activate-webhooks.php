@@ -38,5 +38,12 @@ foreach ($config->getRepositoryUrls() as $url) {
     if (!$webhookManager->supports($url)) {
         continue;
     }
-    $webhookManager->registerFor($url);
+    echo 'Updating hook for ' . $url . '... ';
+    try {
+        $webhookManager->registerFor($url);
+        echo 'Done.' . PHP_EOL;
+    } catch (\Exception $e) {
+        echo 'Failed: ' . PHP_EOL;
+        echo $e . PHP_EOL;
+    }
 }
