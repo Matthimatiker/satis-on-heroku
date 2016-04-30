@@ -74,7 +74,7 @@ class WebhookManagerTest extends \PHPUnit_Framework_TestCase
 
         $this->manager->registerFor($url);
 
-        $this->apiSpy->create()->shouldHaveBeenCalled();
+        $this->apiSpy->create(Argument::any(), Argument::any(), Argument::any())->shouldHaveBeenCalled();
     }
 
     public function testAddsWebhookIfItDoesNotExistYetAndOtherHooksAreRegistered()
@@ -84,7 +84,7 @@ class WebhookManagerTest extends \PHPUnit_Framework_TestCase
 
         $this->manager->registerFor($url);
 
-        $this->apiSpy->create()->shouldHaveBeenCalled();
+        $this->apiSpy->create(Argument::any(), Argument::any(), Argument::any())->shouldHaveBeenCalled();
     }
 
     public function testUpdatesWebhookIfCredentialsChanged()
@@ -94,7 +94,12 @@ class WebhookManagerTest extends \PHPUnit_Framework_TestCase
 
         $this->manager->registerFor($url);
 
-        $this->apiSpy->update()->shouldHaveBeenCalled();
+        $this->apiSpy->update(
+            Argument::any(),
+            Argument::any(),
+            Argument::any(),
+            Argument::any()
+        )->shouldHaveBeenCalled();
     }
 
     public function testUpdatesWebhookIfUrlPathChanged()
@@ -104,7 +109,12 @@ class WebhookManagerTest extends \PHPUnit_Framework_TestCase
 
         $this->manager->registerFor($url);
 
-        $this->apiSpy->update()->shouldHaveBeenCalled();
+        $this->apiSpy->update(
+            Argument::any(),
+            Argument::any(),
+            Argument::any(),
+            Argument::any()
+        )->shouldHaveBeenCalled();
     }
 
     public function testDoesNotUpdateIfWebhookDidNotChange()
@@ -114,8 +124,13 @@ class WebhookManagerTest extends \PHPUnit_Framework_TestCase
 
         $this->manager->registerFor($url);
 
-        $this->apiSpy->update()->shouldNotHaveBeenCalled();
-        $this->apiSpy->create()->shouldNotHaveBeenCalled();
+        $this->apiSpy->update(
+            Argument::any(),
+            Argument::any(),
+            Argument::any(),
+            Argument::any()
+        )->shouldNotHaveBeenCalled();
+        $this->apiSpy->create(Argument::any(), Argument::any(), Argument::any())->shouldNotHaveBeenCalled();
     }
 
     /**
@@ -124,9 +139,14 @@ class WebhookManagerTest extends \PHPUnit_Framework_TestCase
     private function initializeApiSpy()
     {
         $this->apiSpy = $this->prophesize(Hooks::class);
-        $this->apiSpy->all(Argument::any(), Argument::any())->will(function () {
+        $getWebhooks = function () {
             return $this->registeredWebhookData;
+        };
+        $this->apiSpy->all(Argument::any(), Argument::any())->will(function () use ($getWebhooks) {
+            return $getWebhooks();
         });
+        $this->apiSpy->create(Argument::any(), Argument::any(), Argument::any())->willReturn();
+        $this->apiSpy->update(Argument::any(), Argument::any(), Argument::any(), Argument::any())->willReturn();
         return $this->apiSpy->reveal();
     }
 
