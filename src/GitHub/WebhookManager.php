@@ -3,14 +3,19 @@
 namespace Matthimatiker\SatisOnHeroku\GitHub;
 
 use Github\Api\Repository\Hooks;
+use Guzzle\Http\Url;
 use Matthimatiker\SatisOnHeroku\RepositoryUrl;
 
 /**
- *
+ * Manages GitHub push hooks for repositories.
  */
 class WebhookManager
 {
-    public function __construct(Hooks $hookApi, $webhookUrl)
+    /**
+     * @param Hooks $hookApi
+     * @param Url $webhookUrl
+     */
+    public function __construct(Hooks $hookApi, Url $webhookUrl)
     {
     }
 
