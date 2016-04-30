@@ -19,5 +19,9 @@ if ! [ -z "$SATIS_AUTH_USERNAME" ]; then
     php bin/render-template.php views/htaccess.text.twig > web/.htaccess
 fi
 
+if [ "$SATIS_GITHUB_MANAGE_WEBHOOKS" == "1" ]
+    ./bin/activate-webhooks.php
+fi
+
 # Perform an initial build when the instance starts.
 ./vendor/bin/satis build --no-interaction --skip-errors

@@ -32,6 +32,11 @@
             "description": "GitHub-API-Token. Create one at https://github.com/settings/tokens/new?scopes=repo&description=Satis+on+Heroku",
             "required": false
         },
+        "SATIS_GITHUB_MANAGE_WEBHOOKS": {
+            "value": "1",
+            "description": "Indicates if GitHub webhooks are created automatically. Allowed values are 0 and 1. A valid GitHub token is required to manage the webhooks.",
+            "required": false
+        },
         "SATIS_SSH_KEY": {
             "value": "",
             "description": "Private SSH key that is used to access repositories.",
