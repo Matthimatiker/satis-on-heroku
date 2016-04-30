@@ -8,8 +8,15 @@
 namespace Matthimatiker\SatisOnHeroku;
 
 use Github\Client;
+use Guzzle\Http\Url;
+use Matthimatiker\SatisOnHeroku\GitHub\WebhookManager;
 
 require_once(__DIR__ . '/../vendor/autoload.php');
+
+if (!isset($_SERVER['SATIS_URL']) || empty($_SERVER['SATIS_URL'])) {
+    echo 'SATIS_URL not configured.' . PHP_EOL;
+    exit(1);
+}
 
 $config = new SatisConfig();
 $token = $config->getGitHubToken();
@@ -18,16 +25,18 @@ if ($token === null) {
     exit(1);
 }
 
+$webhookUrl = Url::factory(rtrim($_SERVER['SATIS_URL'], '/') . '/github-webhook.php');
+if (isset($_SERVER['SATIS_AUTH_USERNAME']) && !empty($_SERVER['SATIS_AUTH_USERNAME'])) {
+    $webhookUrl->setUsername($_SERVER['SATIS_AUTH_USERNAME']);
+    $webhookUrl->setPassword(isset($_SERVER['SATIS_AUTH_PASSWORD']) ? $_SERVER['SATIS_AUTH_PASSWORD'] : '');
+}
 $client = new Client();
 $client->authenticate($token, null, Client::AUTH_HTTP_TOKEN);
-$webhooksApi = $client->repos()->hooks();
+$webhookManager = new WebhookManager($client->repos()->hooks(), $webhookUrl);
 
 foreach ($config->getRepositoryUrls() as $url) {
-    if ($url->getHost() !== 'github.com') {
+    if (!$webhookManager->supports($url)) {
         continue;
     }
-    list($owner, $repository) = $url->getPathSegments();
-    $repository = basename($repository, '.git');
-    $activeHooks = $webhooksApi->all($owner, $repository);
-    var_dump($activeHooks);
+    $webhookManager->registerFor($url);
 }
