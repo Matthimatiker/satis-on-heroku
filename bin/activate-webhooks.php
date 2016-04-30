@@ -34,6 +34,7 @@ $client = new Client();
 $client->authenticate($token, null, Client::AUTH_HTTP_TOKEN);
 $webhookManager = new WebhookManager($client->repos()->hooks(), $webhookUrl);
 
+$exitCode = 0;
 foreach ($config->getRepositoryUrls() as $url) {
     if (!$webhookManager->supports($url)) {
         continue;
@@ -43,7 +44,9 @@ foreach ($config->getRepositoryUrls() as $url) {
         $webhookManager->registerFor($url);
         echo 'Done.' . PHP_EOL;
     } catch (\Exception $e) {
+        $exitCode = 1;
         echo 'Failed: ' . PHP_EOL;
         echo $e . PHP_EOL;
     }
 }
+exit($exitCode);
