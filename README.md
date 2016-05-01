@@ -84,11 +84,25 @@ Here is an example how to add a repository:
 
 You can also use the app settings page on the [Heroku dashboard](https://dashboard.heroku.com) to add config values.
 
-### Configure GitHub webhook ###
+### Package updates ###
 
-To ensure that your package repository is updated as soon as code is pushed to a GitHub repository you have
-to configure the built in webhook for each repository. Go to your *repository page* -> *Settings* -> *Webhooks and services*
-and register the following Payload URL for push events:
+A full packages scan is performed during instance startup. Delta updates for GitHub repositories
+can be achieved via webhooks.
+
+#### Manage GitHub webhooks automatically ####
+
+Provide a valid GitHub token and set ``SATIS_GITHUB_MANAGE_WEBHOOKS`` to ``1`` to ensure that the
+Satis instance manages package update notifications for GitHub repositories automatically via webhooks.
+A webhook is registered (and kept up to date) for each GitHub repository that has been added to
+your Satis instance.
+
+Now the package repository is updated whenever new code is pushed.
+
+#### Configure GitHub webhook manually ####
+
+If you do not want webhooks to be registered automatically, then you can add the webhooks manually.
+Go to your *repository page* -> *Settings* -> *Webhooks and services* and register the following Payload URL
+for push events:
 
     https://[your-app-name].herokuapp.com/github-webhook.php
 
@@ -96,9 +110,9 @@ Note: If you have activated authentication, then you have to encode the credenti
 
     https://user:password:[your-app-name].herokuapp.com/github-webhook.php
 
-### Update all packages ###
+#### Update all packages ####
 
-To rebuild the whole package repository you have to restart your app:
+To rebuild the whole package repository you can restart your app:
 
     heroku restart
     
