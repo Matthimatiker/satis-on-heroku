@@ -31,7 +31,7 @@ class SatisConfig
     /**
      * Returns the URLs of all configured repositories.
      *
-     * @return string[]
+     * @return RepositoryUrl[]
      */
     public function getRepositoryUrls()
     {
@@ -39,7 +39,7 @@ class SatisConfig
             if (!isset($repositoryData['url'])) {
                 return null;
             }
-            return $repositoryData['url'];
+            return new RepositoryUrl($repositoryData['url']);
         }, $this->config->getRepositories());
         return array_filter($configuredRepositories);
     }
@@ -51,9 +51,20 @@ class SatisConfig
      */
     public function getRepositoryHosts()
     {
-        $hosts = array_map(function ($repositoryUrl) {
-            return parse_url($repositoryUrl, PHP_URL_HOST);
+        $hosts = array_map(function (RepositoryUrl $repositoryUrl) {
+            return $repositoryUrl->getHost();
         }, $this->getRepositoryUrls());
         return array_unique($hosts);
+    }
+
+    /**
+     * Returns the GitHub token, if available.
+     *
+     * @return string|null
+     */
+    public function getGitHubToken()
+    {
+        $auth = $this->config->get('github-oauth');
+        return (isset($auth['github.com'])) ? $auth['github.com'] : null;
     }
 }

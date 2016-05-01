@@ -1,0 +1,25 @@
+{
+    "name": "My Satis",
+    "homepage": "https://my-app.herokuapp.com",
+    "output-dir": "web",
+    "require-all": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://my-company.kilnhg.com/Code/project/group/repo.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:Matthimatiker/satis-on-heroku.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Matthimatiker/OpcacheBundle.git"
+        }
+    ],
+    "config": {
+        "github-oauth": {
+            "github.com": "MySecretGitHubToken"
+        }
+    }
+}

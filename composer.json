@@ -13,10 +13,12 @@
         "composer/satis": "dev-master",
         "twig/twig": "^1.7",
         "symfony/http-foundation": "^3.0",
-        "symfony/process": "^3.0"
+        "symfony/process": "^3.0",
+        "knplabs/github-api": "^1.6"
     },
     "require-dev": {
-        "heroku/heroku-buildpack-php": "^101.0"
+        "heroku/heroku-buildpack-php": "^101.0",
+        "phpunit/phpunit": "^5.3"
     },
     "autoload": {
         "psr-4": {
