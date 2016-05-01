@@ -14,9 +14,9 @@
             "required": true
         },
         "SATIS_URL": {
-            "value": "",
-            "description": "URL to your Satis instance. Usually https://[appname].herokuapp.com.",
-            "required": false
+            "value": "https://[appname].herokuapp.com",
+            "description": "URL to your Satis instance. Usually https://[appname].herokuapp.com (replace [appname] with the name of your Heroku app).",
+            "required": true
         },
         "SATIS_AUTH_USERNAME": {
             "value": "",
