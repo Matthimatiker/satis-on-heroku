@@ -14,7 +14,7 @@ use Matthimatiker\SatisOnHeroku\GitHub\WebhookManager;
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 if (!isset($_SERVER['SATIS_URL']) || empty($_SERVER['SATIS_URL'])) {
-    echo 'SATIS_URL not configured.' . PHP_EOL;
+    echo 'SATIS_URL not configured, cannot determine webhook URL.' . PHP_EOL;
     exit(1);
 }
 
