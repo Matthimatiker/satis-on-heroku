@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Stop script on error.
+set -e
+
 # Generate the Satis config
 php bin/render-template.php views/satis.json.twig > satis.json
 
