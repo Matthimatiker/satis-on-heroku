@@ -17,7 +17,7 @@
         "knplabs/github-api": "^1.6"
     },
     "require-dev": {
-        "heroku/heroku-buildpack-php": "^101.0",
+        "heroku/heroku-buildpack-php": ">=101.0",
         "phpunit/phpunit": "^5.3"
     },
     "autoload": {
