@@ -9,7 +9,7 @@ if ! [ -z "$SATIS_SSH_KEY" ]; then
     echo "$SATIS_SSH_KEY" > $HOME/.ssh/id_rsa
     # Remove the private key from environment variables,
     # it should not be used directly by the application.
-    unset $SATIS_SSH_KEY
+    unset SATIS_SSH_KEY
 
     # Generate a corresponding public key.
     ssh-keygen -y -f $HOME/.ssh/id_rsa > $HOME/.ssh/id_rsa.pub
